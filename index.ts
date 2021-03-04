@@ -1,5 +1,6 @@
 'use strict';
 
+import "reflect-metadata";
 import * as dotenv from 'dotenv';
 import * as Hapi from '@hapi/hapi';
 import { Routes } from './Routes/Routes';
