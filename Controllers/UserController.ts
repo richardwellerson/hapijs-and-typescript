@@ -1,4 +1,4 @@
-import * as Hapi from 'hapi';
+import * as Hapi from '@hapi/hapi';
 
 export const ReturnData = (_req: Hapi.Request, res: Hapi.ResponseToolkit) => {
   return res.response({
