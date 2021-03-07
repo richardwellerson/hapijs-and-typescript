@@ -27,3 +27,5 @@ const User: object = Joi.object({
     .alphanum()
     .required(),
 });
+
+export default User;
