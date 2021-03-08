@@ -12,4 +12,6 @@ export class Vehicle {
   @Column()
   model: string;
 
+  @Column()
+  user: number;
 }

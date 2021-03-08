@@ -16,15 +16,12 @@ export class User {
   password: string;
 
   @Column()
-  phone: number;
+  phone: string;
 
   @Column()
   driverLicense: string;
 
   @Column()
-  vehicle: number;
-
-  @Column()
   role: boolean;
 
-}
+};
