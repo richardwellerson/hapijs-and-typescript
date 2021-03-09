@@ -1,5 +1,5 @@
 import * as Hapi from '@hapi/hapi';
-import * as Types from '../Services/Types';
+import { CrashEventPayload } from '../Services/Types';
 import { CrashEvent } from '../src/entity/CrashEvent';
 import { createConnection } from 'typeorm';
 
@@ -8,7 +8,7 @@ export const RegisterCrashEvent = (req: Hapi.Request, res: Hapi.ResponseToolkit)
     client,
     thirdParties,
     details,
-  } = req.payload as Types.CrashEventPayload;
+  } = req.payload as CrashEventPayload;
 
   const newCrashEvent = new CrashEvent();
 

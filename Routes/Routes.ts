@@ -1,5 +1,6 @@
-import * as UserController from '../Controllers/UserController';
-import * as VehicleController from '../Controllers/VehicleController';
+import { ReturnData, RegisterClient } from '../Controllers/UserController';
+import { RegisterVehicle } from '../Controllers/VehicleController';
+import { RegisterCrashEvent } from '../Controllers/CrashEventController';
 import NotFound from '../Controllers/NotFound';
 
 const RequestMethods: Array<String> = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
@@ -22,16 +23,21 @@ export const Routes: Array<{
   {
     method: 'GET',
     path: '/',
-    handler: UserController.ReturnData.bind(UserController.ReturnData),
+    handler: ReturnData.bind(ReturnData),
   },
   {
     method: 'POST',
     path: '/client',
-    handler: UserController.RegisterClient.bind(UserController.RegisterClient),
+    handler: RegisterClient.bind(RegisterClient),
   },
   {
     method: 'POST',
     path: '/vehicle',
-    handler: VehicleController.RegisterVehicle.bind(VehicleController.RegisterVehicle),
-  }
+    handler: RegisterVehicle.bind(RegisterVehicle),
+  },
+  {
+    method: 'POST',
+    path: '/crashevent',
+    handler: RegisterCrashEvent.bind(RegisterCrashEvent),
+  },
 ];

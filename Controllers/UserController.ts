@@ -1,8 +1,7 @@
 import * as Hapi from '@hapi/hapi';
-import * as Types from '../Services/Types';
+import { UserPayload } from '../Services/Types';
 import { User } from '../src/entity/User';
 import { createConnection } from 'typeorm';
-
 
 export const ReturnData = (_req: Hapi.Request, res: Hapi.ResponseToolkit) => {
   return res.response({
@@ -18,7 +17,7 @@ export const RegisterClient = (req: Hapi.Request, res: Hapi.ResponseToolkit) => 
     password,
     phone,
     driverLicense,
-  } = req.payload as Types.UserPayload;
+  } = req.payload as UserPayload;
 
   const newUser = new User();
 
