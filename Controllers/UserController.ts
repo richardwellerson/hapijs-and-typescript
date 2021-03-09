@@ -10,7 +10,7 @@ export const ReturnData = (_req: Hapi.Request, res: Hapi.ResponseToolkit) => {
   }).code(200);
 };
 
-export const RegisterClient = (req: Hapi.Request, res: Hapi.ResponseToolkit) => {
+export const RegisterClient = async (req: Hapi.Request, res: Hapi.ResponseToolkit) => {
   const {
     name,
     email,
@@ -18,6 +18,18 @@ export const RegisterClient = (req: Hapi.Request, res: Hapi.ResponseToolkit) => 
     phone,
     driverLicense,
   } = req.payload as UserPayload;
+
+
+  const infoUser = await createConnection().then(async (connection) =>
+    connection.getRepository(User).find({ email })
+  );
+
+  if (infoUser && Object.keys(infoUser).length) {
+    return res.response({
+      message: 'User exists at database.',
+      data: infoUser,
+    }).code(409);
+  }
 
   const newUser = new User();
 
@@ -30,7 +42,11 @@ export const RegisterClient = (req: Hapi.Request, res: Hapi.ResponseToolkit) => 
 
   createConnection().then(async (connection) => {
     await connection.manager.save(newUser);
-  });
+  })
+  .catch((err) => res.response({
+    error: err,
+    
+  }).code(500));
 
   return res.response({
     status: 'Created.',
