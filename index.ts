@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import * as dotenv from 'dotenv';
 import * as Hapi from '@hapi/hapi';
-// import JoiPlugin from './Services/JoiValidate';
 import { Routes } from './Routes/Routes';
 
 dotenv.config();
