@@ -6,7 +6,8 @@ import { createConnection } from 'typeorm';
 
 export const ReturnData = (_req: Hapi.Request, res: Hapi.ResponseToolkit) => {
   return res.response({
-    message: 'Hey',
+    message: 'Hey! Access README to understand how this api works.',
+    readme: 'https://github.com/richardwellerson/hapijs-and-typescript/blob/master/README.md',
   }).code(200);
 };
 
@@ -30,11 +31,8 @@ export const RegisterClient = (req: Hapi.Request, res: Hapi.ResponseToolkit) => 
 
   createConnection().then(async (connection) => {
     await connection.manager.save(newUser);
-  })
-  .catch((err: string) => res.response({
-    status: `Error: ${err}`,
-  }));
-  
+  });
+
   return res.response({
     status: 'Created.',
     data: newUser,

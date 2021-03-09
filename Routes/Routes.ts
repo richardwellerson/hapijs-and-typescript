@@ -1,4 +1,5 @@
-import * as Controllers from '../Controllers/UserController';
+import * as UserController from '../Controllers/UserController';
+import * as VehicleController from '../Controllers/VehicleController';
 import NotFound from '../Controllers/NotFound';
 
 const RequestMethods: Array<String> = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
@@ -21,11 +22,16 @@ export const Routes: Array<{
   {
     method: 'GET',
     path: '/',
-    handler: Controllers.ReturnData.bind(Controllers.ReturnData),
+    handler: UserController.ReturnData.bind(UserController.ReturnData),
   },
   {
     method: 'POST',
-    path: '/',
-    handler: Controllers.RegisterClient.bind(Controllers.RegisterClient),
+    path: '/client',
+    handler: UserController.RegisterClient.bind(UserController.RegisterClient),
   },
+  {
+    method: 'POST',
+    path: '/vehicle',
+    handler: VehicleController.RegisterVehicle.bind(VehicleController.RegisterVehicle),
+  }
 ];
